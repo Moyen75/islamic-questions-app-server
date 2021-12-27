@@ -18,15 +18,18 @@ params.madhab = adhan.Madhab.Hanafi;
 
 var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
 
-var fajrTime = moment(prayerTimes.fajr).tz('Bangladesh/Dhaka').format('h:mm A');
-var sunriseTime = moment(prayerTimes.sunrise).tz('Bangladesh/Dhaka').format('h:mm A');
-var dhuhrTime = moment(prayerTimes.dhuhr).tz('Bangladesh/Dhaka').format('h:mm A');
-var asrTime = moment(prayerTimes.asr).tz('Bangladesh/Dhaka').format('h:mm A');
-var maghribTime = moment(prayerTimes.maghrib).tz('Bangladesh/Dhaka').format('h:mm A');
-var ishaTime = moment(prayerTimes.isha).tz('Bangladesh/Dhaka').format('h:mm A');
+var fajrTime = moment(prayerTimes.fajr).tz('Asia/Dhaka').format('h:mm A');
+var sunriseTime = moment(prayerTimes.sunrise).tz('Asia/Dhaka').format('h:mm A');
+var dhuhrTime = moment(prayerTimes.dhuhr).tz('Asia/Dhaka').format('h:mm A');
+var asrTime = moment(prayerTimes.asr).tz('Asia/Dhaka').format('h:mm A');
+var maghribTime = moment(prayerTimes.maghrib).tz('Asia/Dhaka').format('h:mm A');
+var ishaTime = moment(prayerTimes.isha).tz('Asia/Dhaka').format('h:mm A');
+
+const timezoneName=moment.tz.names();
 
 app.get('/pray',(req,res)=>{
     res.send({fajrTime,sunriseTime,dhuhrTime,asrTime,maghribTime,ishaTime,date})
+    // res.send(timezoneName)
 })
 
 app.get('/', (req, res) => {
